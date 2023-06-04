@@ -3,7 +3,7 @@ import { useState, type FC } from 'react'
 import useSWR from 'swr'
 
 const fetcher = async (url: string): Promise<any> =>
-  await fetch(url, { cache: 'no-cache' }).then(async (res) => await res.json())
+  await fetch(url).then(async (res) => await res.json())
 
 interface BoothData {
   boothName: string

@@ -10,5 +10,5 @@ export const createToken = (userId: number, boothId?: number): string =>
 export const verifyToken = (token: string): TokenPayload | undefined => {
   try {
     return verify(token, TOKEN_SECRET) as TokenPayload
-  } catch (e) { console.log(e); return undefined }
+  } catch (e) { return undefined }
 }

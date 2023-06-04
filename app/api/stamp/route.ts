@@ -1,9 +1,10 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { verifyToken } from '../../../utils/jwt'
 import { getDB } from '../../../utils/dbconn'
+import { cookies } from 'next/dist/client/components/headers'
 
-export const GET = async (request: NextRequest): Promise<NextResponse> => {
-  const cookieStore = request.cookies
+export const GET = async (): Promise<NextResponse> => {
+  const cookieStore = cookies()
   const sessionToken = cookieStore.get('SESSION_TOKEN')?.value ?? ''
 
   const db = getDB()
