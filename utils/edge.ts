@@ -1,6 +1,5 @@
 import { type RequestCookies } from 'next/dist/compiled/@edge-runtime/cookies'
 import { type TokenPayload } from './token'
-import { decode } from 'jsonwebtoken'
 
 export enum EdgeUserType {
   UNLOGINED,
@@ -9,7 +8,7 @@ export enum EdgeUserType {
 }
 
 export const edgeDecodeJWTImpl = (jwtToken: string): TokenPayload | undefined => {
-  const payload = decode(jwtToken) as TokenPayload | null
+  const payload = JSON.parse(atob(jwtToken.split('.')[1])) as TokenPayload
 
   if (payload === null)
     return undefined
