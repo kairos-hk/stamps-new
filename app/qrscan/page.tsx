@@ -1,8 +1,14 @@
 'use client'
-import { useState, type FC } from 'react'
+import { useState, type FC, type ComponentProps } from 'react'
 import style from './style.module.scss'
-import QRScannerComponent from 'react-qr-barcode-scanner'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
+import type QRScannerComponentOriginal from 'react-qr-barcode-scanner'
+
+const QRScannerComponent = dynamic<ComponentProps<typeof QRScannerComponentOriginal>>(
+  async () => await import('react-qr-barcode-scanner'),
+  { ssr: false }
+)
 
 interface StampData {
   userName: string

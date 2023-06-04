@@ -1,11 +1,14 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { type FC } from 'react'
+import { useEffect, type FC } from 'react'
 
 const NotFound: FC = () => {
   const router = useRouter()
-  router.push('/')
+
+  useEffect(() => {
+    router.push('/')
+  }, [router])
 
   return <></>
 }
