@@ -17,12 +17,15 @@ const StampList: FC = () => {
     refreshInterval: 10
   })
 
+  const logout = (): void => {
+    document.cookie = 'SESSION_TOKEN=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+    window.location.reload()
+  }
+
   const calcSysPass = (index: number) => () => {
     const nextSysPass = `${(index + 1)}${sysPass}`.slice(0, 4)
-    if (nextSysPass === '1324') {
-      document.cookie = 'SESSION_TOKEN=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
-      window.location.reload()
-    }
+    if (nextSysPass === '1324')
+      logout()
 
     setSysPass(nextSysPass)
   }
@@ -51,6 +54,7 @@ const StampList: FC = () => {
           ))}
         </tbody>
       </table>
+      <button onClick={logout}>로그아웃(임시)</button>
     </section>
   )
 }

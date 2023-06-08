@@ -18,12 +18,15 @@ const BoothList: FC = () => {
 
   const calcSysPass = (index: number) => () => {
     const nextSysPass = `${(index + 1)}${sysPass}`.slice(0, 4)
-    if (nextSysPass === '1324') {
-      document.cookie = 'SESSION_TOKEN=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
-      window.location.reload()
-    }
+    if (nextSysPass === '1324')
+      logout()
 
     setSysPass(nextSysPass)
+  }
+
+  const logout = (): void => {
+    document.cookie = 'SESSION_TOKEN=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+    window.location.reload()
   }
 
   return (
@@ -48,6 +51,7 @@ const BoothList: FC = () => {
           </li>
         ))}
       </ul>
+      <button className="border" onClick={logout}>로그아웃(임시)</button>
     </section>
   )
 }
