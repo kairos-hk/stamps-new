@@ -32,22 +32,21 @@ const MyQRPage: FC = async () => {
   const qrCode = await createQRCode()
 
   return (
-    <main className="h-full flex flex-col gap-5">
-      <h1 className="flex-none">스탬프 QR 보기</h1>
-      <div className="grow shrink overflow-auto flex flex-col gap-5">
+    <main className="h-full flex flex-col gap-2 bg-black bg-opacity-75 p-10 justify-center">
+      <div className="flex flex-col rounded bg-white">
         <Image
-          className="w-full"
+          className="w-full p-12"
           alt="스템프용 QR 코드"
           height={100} width={100} src={qrCode}
           style={{ imageRendering: 'pixelated' }} />
 
-        <p className="px-4 py-2 bg-black bg-opacity-5">QR 코드를 부스에 보여주세요</p>
+        <Link href="/mystamps" className="w-full">
+          <button className='w-full py-5 border-t text-primary'>
+            돌아가기
+          </button>
+        </Link>
       </div>
-      <Link href="/mystamps" className="w-full flex-none">
-        <button className='w-full border px-4 py-2'>
-          돌아가기
-        </button>
-      </Link>
+      <p className="text-white text-sm">* QR 코드를 부스에 보여주세요</p>
     </main>
   )
 }

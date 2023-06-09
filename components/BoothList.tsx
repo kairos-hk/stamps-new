@@ -12,7 +12,7 @@ interface BoothData {
 
 const BoothList: FC = () => {
   const [sysPass, setSysPass] = useState('')
-  const { data, isLoading, mutate } = useSWR<BoothData[]>('/api/booth', fetcher, {
+  const { data } = useSWR<BoothData[]>('/api/booth', fetcher, {
     refreshInterval: 10
   })
 
@@ -31,15 +31,14 @@ const BoothList: FC = () => {
 
   return (
     <section className="flex flex-col gap-5">
-      <button onClick={() => { void mutate() }} disabled={isLoading} className='w-full border px-4 py-2'>
-        {isLoading ? '불러오는 중' : '새로고침'}
-      </button>
       <ul className="w-full grid grid-cols-3 gap-5">
         {data?.map((booth, i) => (
           <li key={i}>
           <div
             onClick={calcSysPass(i)}
-            className="w-full border aspect-square">
+            className="w-full aspect-square flex justify-center items-center bg-secondary rounded font-bold">
+              <p className="p-3 text-center">{booth.boothName}</p>
+
               {booth.isStamped && (
                 <div
                   className="border-4 border-red-600 w-full h-full rounded-full flex justify-center items-center font-bold text-red-600 -rotate-45">
@@ -47,11 +46,9 @@ const BoothList: FC = () => {
                 </div>
               )}
             </div>
-            <p className="text-center">{booth.boothName}</p>
           </li>
         ))}
       </ul>
-      <button className="border" onClick={logout}>로그아웃(임시)</button>
     </section>
   )
 }

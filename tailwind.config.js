@@ -5,6 +5,16 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}'
   ],
-  theme: {},
+  theme: {
+    extend: {
+      colors: {
+        primary: '#1c3976',
+        secondary: '#f8f8f8'
+      }
+    },
+    fontWeight: {
+      bold: 700
+    }
+  },
   plugins: []
 }

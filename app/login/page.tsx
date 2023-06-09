@@ -51,53 +51,70 @@ const LoginPage: FC = () => {
   }
 
   return (
-    <main className="border p-5">
-      <h1 className="flex flex-col items-center">
-        <Image src="/assets/logo.png" width={200} height={55} alt="2023 경상북도교육청 직업교육박람회" />
-        <p>체험하고~ 선물도 받자!</p>
-      </h1>
+    <main className="h-full">
+      <form onSubmit={onSubmit} className='h-full flex flex-col gap-5'>
+        <div className='grow flex flex-col justify-center gap-5'>
+          <h1 className="flex justify-center">
+            <Image src="/assets/logo.png" width={200} height={55} alt="2023 경상북도교육청 직업교육박람회" />
+          </h1>
 
-      <form onSubmit={onSubmit} className='flex flex-col gap-5'>
-        <label>
-          <p>성명</p>
-          <input
-            type="text"
-            value={userName}
-            disabled={isDisabled}
-            placeholder="박ㅇㅇ (띄워쓰기 없이 입력)"
-            maxLength={30}
-            onChange={(e) => { setUserName(e.target.value.replace(' ', '')) }}
-            className="border w-full px-4 py-2 focus:outline-none focus:border-gray-500" />
-        </label>
+          <label>
+            <p className="font-bold mb-2">성명</p>
+            <input
+              type="text"
+              value={userName}
+              disabled={isDisabled}
+              placeholder="박ㅇㅇ (띄워쓰기 없이 입력)"
+              maxLength={30}
+              onChange={(e) => { setUserName(e.target.value.replace(' ', '')) }}
+              className="border border-secondary rounded bg-secondary w-full px-5 py-6 focus:outline-none focus:border-primary" />
+          </label>
 
-        <label>
-          <p>소속명 (학교명)</p>
-          <input
-            type="text"
-            value={userGroup}
-            disabled={isDisabled}
-            placeholder="ㅇㅇ중학교 (띄워쓰기 없이 입력)"
-            maxLength={30}
-            onChange={(e) => { setUserGroup(e.target.value.replace(' ', '')) }}
-            className="border w-full px-4 py-2 focus:outline-none focus:border-gray-500" />
-        </label>
+          <label>
+            <p className="font-bold mb-2">소속명 (학교명)</p>
+            <input
+              type="text"
+              value={userGroup}
+              disabled={isDisabled}
+              placeholder="ㅇㅇ중학교 (띄워쓰기 없이 입력)"
+              maxLength={30}
+              onChange={(e) => { setUserGroup(e.target.value.replace(' ', '')) }}
+              className="border border-secondary rounded bg-secondary w-full px-5 py-6 focus:outline-none focus:border-primary" />
+          </label>
 
-        <label>
-          <p>전화번호</p>
-          <input
-            type="tel"
-            value={userPhone}
-            disabled={isDisabled}
-            placeholder="01012345678 (- 없이 입력)"
-            maxLength={30}
-            onChange={(e) => { setUserPhone(e.target.value.replace(/[^\d]/, '')) }}
-            className="border w-full px-4 py-2 focus:outline-none focus:border-gray-500" />
-        </label>
+          <label>
+            <p className="font-bold mb-2">전화번호</p>
+            <input
+              type="tel"
+              value={userPhone}
+              disabled={isDisabled}
+              placeholder="01012345678 (- 없이 입력)"
+              maxLength={30}
+              onChange={(e) => { setUserPhone(e.target.value.replace(/[^\d]/, '')) }}
+              className="border border-secondary rounded bg-secondary w-full px-5 py-6 focus:outline-none focus:border-primary" />
+          </label>
+
+          <div className="flex gap-3 justify-center items-center break-keep">
+            <div className="flex gap-2">
+              <p>주최</p>
+              <a target="_blank" href="https://gbe.kr">
+                <Image src="/assets/gbe.png" height="20" width="120" alt="경상북도교육청" />
+              </a>
+            </div>
+            <hr className="h-[20px] border" />
+            <div className="flex gap-2">
+              <p>제작</p>
+              <a target="_blank" href="https://gbsw.hs.kr">
+                <Image src="/assets/gbsw.png" height="20" width="120" alt="경북소프트웨어고" />
+              </a>
+            </div>
+          </div>
+        </div>
 
         <button
           type="submit"
           disabled={isDisabled}
-          className="border px-4 py-2 disabled:opacity-50">
+          className="rounded bg-primary text-white py-6 disabled:opacity-50">
           시작하기
         </button>
       </form>
