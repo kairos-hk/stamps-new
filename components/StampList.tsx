@@ -13,7 +13,7 @@ interface StampData {
 
 const StampList: FC = () => {
   const [sysPass, setSysPass] = useState('')
-  const { data, isLoading, mutate } = useSWR<StampData[]>('/api/stamp', fetcher, {
+  const { data } = useSWR<StampData[]>('/api/stamp', fetcher, {
     refreshInterval: 10
   })
 
@@ -32,29 +32,36 @@ const StampList: FC = () => {
 
   return (
     <section className="flex flex-col gap-5">
-      <button onClick={() => { void mutate() }} disabled={isLoading} className='w-full border px-4 py-2'>
-        {isLoading ? '불러오는 중' : '새로고침'}
-      </button>
-
-      <table className="border-collaps w-full">
-        <thead className="border-b-2">
+      <table className="w-full">
+        <thead>
           <tr>
-            <th>이름</th>
-            <th>소속</th>
-            <th>전화번호</th>
+            <th className="pb-2">이름</th>
+            <th className="pb-2 text-left">소속</th>
+            <th className="pb-2 pr-4 text-right">전화번호</th>
           </tr>
         </thead>
-        <tbody className="text-center">
+        <tbody>
           {data?.map((stamp, i) => (
-            <tr onClick={calcSysPass(i)} key={i}>
-              <td>{stamp.userName}</td>
-              <td>{stamp.userGroup}</td>
-              <td>{stamp.userPhone}</td>
+            <tr className="text-inter" onClick={calcSysPass(i)} key={i}>
+              <td className="py-1 px-0">
+                <div className="rounded-l bg-secondary pl-4 py-6">
+                  {stamp.userName}
+                </div>
+              </td>
+              <td className="py-1 px-0">
+                <div className="bg-secondary py-6">
+                  {stamp.userGroup}
+                </div>
+              </td>
+              <td className="py-1 px-0">
+                <div className="rounded-r bg-secondary pr-4 py-6 text-right text-primary">
+                  {stamp.userPhone}
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <button onClick={logout}>로그아웃(임시)</button>
     </section>
   )
 }

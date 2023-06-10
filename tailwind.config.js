@@ -9,7 +9,8 @@ module.exports = {
     extend: {
       colors: {
         primary: '#1c3976',
-        secondary: '#f8f8f8'
+        secondary: '#f8f8f8',
+        inter: '#9e9ea7'
       }
     },
     fontWeight: {

@@ -68,7 +68,7 @@ const QRScanPage: FC = () => {
       )}
 
       <Link href="/boothstamps" className="absolute z-10 bottom-0 w-full">
-        <button className='w-full border px-4 py-2 bg-white'>
+        <button className='rounded bg-primary text-white py-6 w-full'>
           돌아가기
         </button>
       </Link>

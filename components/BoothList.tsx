@@ -36,13 +36,15 @@ const BoothList: FC = () => {
           <li key={i}>
           <div
             onClick={calcSysPass(i)}
-            className="w-full aspect-square flex justify-center items-center bg-secondary rounded font-bold">
+            className="w-full aspect-square relative flex justify-center items-center bg-secondary rounded font-bold">
               <p className="p-3 text-center">{booth.boothName}</p>
 
               {booth.isStamped && (
                 <div
-                  className="border-4 border-red-600 w-full h-full rounded-full flex justify-center items-center font-bold text-red-600 -rotate-45">
-                  체험완료!
+                  className="absolute w-full h-full p-5 rounded bg-black bg-opacity-75">
+                    <div className="border-4 w-full h-full rounded-full border-white flex justify-center items-center font-bold text-white -rotate-45">
+                      완료!
+                    </div>
                 </div>
               )}
             </div>
