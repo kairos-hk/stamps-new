@@ -1,4 +1,6 @@
 'use client'
+import style from './style.module.scss'
+
 import { useState, type FC } from 'react'
 import useSWR from 'swr'
 
@@ -31,20 +33,20 @@ const BoothList: FC = () => {
 
   return (
     <section>
-      <ul>
+      <ul className={style.grid}>
         {data?.map((booth, i) => (
-          <li key={i}>
-            <div onClick={calcSysPass(i)}>
-              <p>{booth.boothName}</p>
+          <li key={i} onClick={calcSysPass(i)}>
+            <p>{booth.boothName}</p>
 
-              {booth.isStamped && (
-                <div>
-                    <div>
-                      완료!
-                    </div>
+            {booth.isStamped && (
+              <div className={style.doneBg}>
+                <div className={style.doneStamp}>
+                  <p>
+                    완료!
+                  </p>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </li>
         ))}
       </ul>
