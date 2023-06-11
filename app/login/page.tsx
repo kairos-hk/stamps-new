@@ -1,8 +1,12 @@
 'use client'
 
+import style from './style.module.scss'
+
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { type FormEvent, type FC, useState } from 'react'
+import { Button } from '../../components/Button'
+import { Input } from '../../components/Input'
 
 const LoginPage: FC = () => {
   const router = useRouter()
@@ -51,38 +55,38 @@ const LoginPage: FC = () => {
   }
 
   return (
-    <main>
+    <main className={style.container}>
       <form onSubmit={onSubmit}>
-        <div>
+        <div className={style.inputs}>
           <h1>
-            <Image src="/assets/logo.png" width={200} height={55} alt="2023 경상북도교육청 직업교육박람회" />
+            <Image src="/assets/logo.png" width={151} height={48} alt="2023 경상북도교육청 직업교육박람회" />
           </h1>
 
           <label>
             <p>성명</p>
-            <input
+            <Input
               type="text"
               value={userName}
               disabled={isDisabled}
-              placeholder="박ㅇㅇ (띄워쓰기 없이 입력)"
+              placeholder="박OO (띄워쓰기 없이 입력)"
               maxLength={30}
               onChange={(e) => { setUserName(e.target.value.replace(' ', '')) }} />
           </label>
 
           <label>
             <p>소속명 (학교명)</p>
-            <input
+            <Input
               type="text"
               value={userGroup}
               disabled={isDisabled}
-              placeholder="ㅇㅇ중학교 (띄워쓰기 없이 입력)"
+              placeholder="OO중학교 (띄워쓰기 없이 입력)"
               maxLength={30}
               onChange={(e) => { setUserGroup(e.target.value.replace(' ', '')) }} />
           </label>
 
           <label>
             <p>전화번호</p>
-            <input
+            <Input
               type="tel"
               value={userPhone}
               disabled={isDisabled}
@@ -91,28 +95,24 @@ const LoginPage: FC = () => {
               onChange={(e) => { setUserPhone(e.target.value.replace(/[^\d]/, '')) }} />
           </label>
 
-          <div>
-            <div>
-              <p>주최</p>
-              <a target="_blank" href="https://gbe.kr">
-                <Image src="/assets/gbe.png" height="20" width="120" alt="경상북도교육청" />
-              </a>
-            </div>
+          <div className={style.credit}>
+            <p>주최</p>
+            <a className={style.gbe} target="_blank" href="https://gbe.kr">
+              <Image className={style.gbe} src="/assets/gbe.png" height="28" width="130" alt="경상북도교육청" />
+            </a>
             <hr />
-            <div>
-              <p>제작</p>
-              <a target="_blank" href="https://gbsw.hs.kr">
-                <Image src="/assets/gbsw.png" height="20" width="120" alt="경북소프트웨어고" />
-              </a>
-            </div>
+            <p>제작</p>
+            <a className={style.gbsw} target="_blank" href="https://gbsw.hs.kr">
+              <Image className={style.gbsw} src="/assets/gbsw.png" height="30" width="130" alt="경북소프트웨어고" />
+            </a>
           </div>
         </div>
 
-        <button
+        <Button
           type="submit"
           disabled={isDisabled}>
           시작하기
-        </button>
+        </Button>
       </form>
     </main>
   )

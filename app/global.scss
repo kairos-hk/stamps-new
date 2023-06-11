@@ -1,0 +1,37 @@
+@import 'normalize.css';
+
+:root {
+  user-select: none;
+  
+  font-size: 14px;
+  font-family: 'Noto Sans CJK KR', Arial, Helvetica, sans-serif;
+  line-height: 20px;
+
+  --color-primary: #1C3976;
+  --color-secondary: #F8F8F8;
+  --color-text: #191919;
+  --color-text-secondary: #9E9EA7;
+  --color-border: #D8D8D8;
+
+  --radius-common: 5px;
+
+  color: var(--color-text);
+  font-weight: 400;
+}
+
+* {
+  transition: all ease-in 0.1s;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p, ul, li, ol, input, button, div, main, br, hr {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+input, label {
+  width: 100%;
+}

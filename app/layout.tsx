@@ -1,4 +1,7 @@
-import './globals.scss'
+import './global.scss'
+import style from './layout.module.scss'
+
+import clsx from 'clsx'
 import { type Metadata } from 'next'
 import { type ReactNode, type FC } from 'react'
 
@@ -15,8 +18,8 @@ interface Props {
 }
 
 const RootLayout: FC<Props> = ({ children }) =>
-  <html lang="ko" className={notoSansKR.className}>
-    <body>
+  <html lang="ko" className={clsx(notoSansKR.className, style.container)}>
+    <body className={style.content}>
       {children}
     </body>
   </html>

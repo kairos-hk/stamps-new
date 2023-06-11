@@ -1,0 +1,26 @@
+.input {
+  height: 60px;
+  width: 100%;
+  padding: 20px 14px;
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-common);
+  box-sizing: border-box;
+  border: 1px solid transparent;
+
+  &:focus {
+    border-color: var(--color-primary);
+  }
+
+  &:disabled {
+    opacity: 0.75;
+  }
+
+  &::placeholder {
+    color: var(--color-text-secondary);
+  }
+
+  &::selection {
+    background-color: var(--color-primary);
+    color: white;
+  }
+}
