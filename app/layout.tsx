@@ -1,4 +1,4 @@
-import './globals.css'
+import './globals.scss'
 import { type Metadata } from 'next'
 import { type ReactNode, type FC } from 'react'
 
@@ -7,7 +7,7 @@ import { Noto_Sans_KR } from 'next/font/google'
 const notoSansKR = Noto_Sans_KR({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['400', '700']
+  weight: ['400', '500']
 })
 
 interface Props {
@@ -15,8 +15,8 @@ interface Props {
 }
 
 const RootLayout: FC<Props> = ({ children }) =>
-  <html lang="ko" className={`w-full h-full flex justify-center ${notoSansKR.className}`}>
-    <body className='w-full h-full max-w-md p-5 flex justify-stretch flex-col gap-5'>
+  <html lang="ko" className={notoSansKR.className}>
+    <body>
       {children}
     </body>
   </html>

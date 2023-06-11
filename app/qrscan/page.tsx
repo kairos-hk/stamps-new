@@ -55,20 +55,20 @@ const QRScanPage: FC = () => {
   }
 
   return (
-    <main className={`${style.qr} relative`}>
-      <p className="absolute top-0 z-10 bg-black bg-opacity-25 px-4 py-2 text-center text-white w-full">
+    <main className={style.qr}>
+      <p>
         방문객의 스탬프 QR코드를 스캔하세요
       </p>
 
       <QRScannerComponent stopStream={isLoading} onUpdate={(_, result) => { void onUpdate(result) }} />
       {isLoading && (
-        <div className="fixed z-20 flex justify-center items-center text-white bg-black bg-opacity-75 top-0 left-0 w-full h-full">
+        <div>
           스탬프 찍는중...
         </div>
       )}
 
-      <Link href="/boothstamps" className="absolute z-10 bottom-0 w-full">
-        <button className='rounded bg-primary text-white py-6 w-full'>
+      <Link href="/boothstamps">
+        <button>
           돌아가기
         </button>
       </Link>

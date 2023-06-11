@@ -31,30 +31,30 @@ const StampList: FC = () => {
   }
 
   return (
-    <section className="flex flex-col gap-5">
-      <table className="w-full">
+    <section>
+      <table>
         <thead>
           <tr>
-            <th className="pb-2">이름</th>
-            <th className="pb-2 text-left">소속</th>
-            <th className="pb-2 pr-4 text-right">전화번호</th>
+            <th>이름</th>
+            <th>소속</th>
+            <th>전화번호</th>
           </tr>
         </thead>
         <tbody>
           {data?.map((stamp, i) => (
-            <tr className="text-inter" onClick={calcSysPass(i)} key={i}>
-              <td className="py-1 px-0">
-                <div className="rounded-l bg-secondary pl-4 py-6">
+            <tr onClick={calcSysPass(i)} key={i}>
+              <td>
+                <div>
                   {stamp.userName}
                 </div>
               </td>
-              <td className="py-1 px-0">
-                <div className="bg-secondary py-6">
+              <td>
+                <div>
                   {stamp.userGroup}
                 </div>
               </td>
-              <td className="py-1 px-0">
-                <div className="rounded-r bg-secondary pr-4 py-6 text-right text-primary">
+              <td>
+                <div>
                   {stamp.userPhone}
                 </div>
               </td>

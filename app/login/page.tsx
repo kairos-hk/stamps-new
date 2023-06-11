@@ -51,58 +51,55 @@ const LoginPage: FC = () => {
   }
 
   return (
-    <main className="h-full">
-      <form onSubmit={onSubmit} className='h-full flex flex-col gap-5'>
-        <div className='grow flex flex-col justify-center gap-5'>
-          <h1 className="flex justify-center">
+    <main>
+      <form onSubmit={onSubmit}>
+        <div>
+          <h1>
             <Image src="/assets/logo.png" width={200} height={55} alt="2023 경상북도교육청 직업교육박람회" />
           </h1>
 
           <label>
-            <p className="font-bold mb-2">성명</p>
+            <p>성명</p>
             <input
               type="text"
               value={userName}
               disabled={isDisabled}
               placeholder="박ㅇㅇ (띄워쓰기 없이 입력)"
               maxLength={30}
-              onChange={(e) => { setUserName(e.target.value.replace(' ', '')) }}
-              className="border border-secondary rounded bg-secondary w-full px-5 py-6 focus:outline-none focus:border-primary" />
+              onChange={(e) => { setUserName(e.target.value.replace(' ', '')) }} />
           </label>
 
           <label>
-            <p className="font-bold mb-2">소속명 (학교명)</p>
+            <p>소속명 (학교명)</p>
             <input
               type="text"
               value={userGroup}
               disabled={isDisabled}
               placeholder="ㅇㅇ중학교 (띄워쓰기 없이 입력)"
               maxLength={30}
-              onChange={(e) => { setUserGroup(e.target.value.replace(' ', '')) }}
-              className="border border-secondary rounded bg-secondary w-full px-5 py-6 focus:outline-none focus:border-primary" />
+              onChange={(e) => { setUserGroup(e.target.value.replace(' ', '')) }} />
           </label>
 
           <label>
-            <p className="font-bold mb-2">전화번호</p>
+            <p>전화번호</p>
             <input
               type="tel"
               value={userPhone}
               disabled={isDisabled}
               placeholder="01012345678 (- 없이 입력)"
               maxLength={30}
-              onChange={(e) => { setUserPhone(e.target.value.replace(/[^\d]/, '')) }}
-              className="border border-secondary rounded bg-secondary w-full px-5 py-6 focus:outline-none focus:border-primary" />
+              onChange={(e) => { setUserPhone(e.target.value.replace(/[^\d]/, '')) }} />
           </label>
 
-          <div className="flex gap-3 justify-center items-center break-keep">
-            <div className="flex gap-2">
+          <div>
+            <div>
               <p>주최</p>
               <a target="_blank" href="https://gbe.kr">
                 <Image src="/assets/gbe.png" height="20" width="120" alt="경상북도교육청" />
               </a>
             </div>
-            <hr className="h-[20px] border" />
-            <div className="flex gap-2">
+            <hr />
+            <div>
               <p>제작</p>
               <a target="_blank" href="https://gbsw.hs.kr">
                 <Image src="/assets/gbsw.png" height="20" width="120" alt="경북소프트웨어고" />
@@ -113,8 +110,7 @@ const LoginPage: FC = () => {
 
         <button
           type="submit"
-          disabled={isDisabled}
-          className="rounded bg-primary text-white py-6 disabled:opacity-50">
+          disabled={isDisabled}>
           시작하기
         </button>
       </form>

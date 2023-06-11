@@ -31,13 +31,13 @@ const BoothStampsPage: FC = async () => {
   const boothName = await getBoothName()
 
   return (
-    <main className="h-full flex flex-col gap-6">
-      <h1 className="flex-none text-center font-bold text-lg py-8">{boothName ?? '우리 부스'}의 스탬프</h1>
-      <div className="grow shrink overflow-auto">
+    <main>
+      <h1>{boothName ?? '우리 부스'}의 스탬프</h1>
+      <div>
         <StampList />
       </div>
-      <Link href="/qrscan" className="w-full flex-none">
-        <button className='rounded bg-primary text-white py-6 w-full'>
+      <Link href="/qrscan">
+        <button>
           스탬프 QR코드 스캔
         </button>
       </Link>

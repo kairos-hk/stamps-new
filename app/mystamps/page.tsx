@@ -31,13 +31,13 @@ const MyStampsPage: FC = async () => {
   const userName = await getUserName()
 
   return (
-    <main className="h-full flex flex-col gap-5">
-      <h1 className="flex-none text-center font-bold text-lg py-8">{userName ?? '나'}의 스탬프</h1>
-      <div className="grow shrink overflow-auto">
+    <main>
+      <h1>{userName ?? '나'}의 스탬프</h1>
+      <div>
         <BoothList />
       </div>
-      <Link href="/myqr" className="w-full flex-none">
-        <button className='rounded bg-primary text-white py-6 w-full'>
+      <Link href="/myqr">
+        <button>
           스탬프 QR코드 표시
         </button>
       </Link>

@@ -30,19 +30,16 @@ const BoothList: FC = () => {
   }
 
   return (
-    <section className="flex flex-col gap-5">
-      <ul className="w-full grid grid-cols-3 gap-5">
+    <section>
+      <ul>
         {data?.map((booth, i) => (
           <li key={i}>
-          <div
-            onClick={calcSysPass(i)}
-            className="w-full aspect-square relative flex justify-center items-center bg-secondary rounded font-bold">
-              <p className="p-3 text-center">{booth.boothName}</p>
+            <div onClick={calcSysPass(i)}>
+              <p>{booth.boothName}</p>
 
               {booth.isStamped && (
-                <div
-                  className="absolute w-full h-full p-5 rounded bg-black bg-opacity-75">
-                    <div className="border-4 w-full h-full rounded-full border-white flex justify-center items-center font-bold text-white -rotate-45">
+                <div>
+                    <div>
                       완료!
                     </div>
                 </div>
