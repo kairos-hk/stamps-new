@@ -49,6 +49,21 @@ const BoothList: FC = () => {
             )}
           </li>
         ))}
+
+        {data === undefined && (
+          <>
+            <li className={style.dummy}></li>
+            <li className={style.dummy}></li>
+            <li className={style.dummy}></li>
+            <li className={style.dummy}></li>
+            <li className={style.dummy}></li>
+            <li className={style.dummy}></li>
+            <li className={style.dummy}></li>
+            <li className={style.dummy}></li>
+            <li className={style.dummy}></li>
+            <li className={style.dummy}></li>
+          </>
+        )}
       </ul>
     </section>
   )

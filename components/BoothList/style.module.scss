@@ -19,6 +19,13 @@
 
     text-align: center;
 
+    &.dummy {
+      background: linear-gradient(to right, #eee 2%, #ddd 18%, #eee 33%);
+      background-size: 1300px;
+
+      animation: dummy-animation 2s linear infinite;
+    }
+
     .doneBg {
       position: absolute;
       width: 100%;
@@ -48,4 +55,9 @@
       }
     }
   }
+}
+
+@keyframes dummy-animation {
+  0%{ background-position: -650px 0; }
+  100%{ background-position: 650px 0; }
 }
