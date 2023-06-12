@@ -32,7 +32,8 @@ export const Modal: FC<Props> = ({
             {backButtonLabel}
           </button>
         </div>
-        <p className={style.notice}>{notice}</p>
+        {notice !== undefined &&
+          <p className={style.notice}>{notice}</p>}
       </div>
     </div>
   )
