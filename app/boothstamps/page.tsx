@@ -1,9 +1,12 @@
+import style from './style.module.scss'
+
 import { type FC } from 'react'
 import { getDB } from '../../utils/dbconn'
 import { cookies } from 'next/dist/client/components/headers'
 import { verifyToken } from '../../utils/jwt'
 import Link from 'next/link'
 import StampList from '../../components/StampList'
+import { Button } from '../../components/Button'
 
 const getBoothName = async (): Promise<string | undefined> => {
   const db = getDB()
@@ -31,15 +34,15 @@ const BoothStampsPage: FC = async () => {
   const boothName = await getBoothName()
 
   return (
-    <main>
+    <main className={style.container}>
       <h1>{boothName ?? '우리 부스'}의 스탬프</h1>
-      <div>
+      <div className={style.stampList}>
         <StampList />
       </div>
       <Link href="/qrscan">
-        <button>
+        <Button>
           스탬프 QR코드 스캔
-        </button>
+        </Button>
       </Link>
     </main>
   )

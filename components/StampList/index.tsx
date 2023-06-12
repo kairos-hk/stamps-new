@@ -1,4 +1,5 @@
 'use client'
+import style from './style.module.scss'
 import { useState, type FC } from 'react'
 import useSWR from 'swr'
 
@@ -31,13 +32,13 @@ const StampList: FC = () => {
   }
 
   return (
-    <section>
+    <section className={style.container}>
       <table>
         <thead>
           <tr>
-            <th>이름</th>
-            <th>소속</th>
-            <th>전화번호</th>
+            <th><div>이름</div></th>
+            <th><div>소속</div></th>
+            <th><div>전화번호</div></th>
           </tr>
         </thead>
         <tbody>
@@ -55,7 +56,9 @@ const StampList: FC = () => {
               </td>
               <td>
                 <div>
-                  {stamp.userPhone}
+                  <a href={`tel:${stamp.userPhone}`}>
+                    {stamp.userPhone.replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, '$1-$2-$3')}
+                  </a>
                 </div>
               </td>
             </tr>
