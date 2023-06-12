@@ -5,8 +5,8 @@ import { getDB } from '../../utils/dbconn'
 import BoothList from '../../components/BoothList'
 import { cookies } from 'next/dist/client/components/headers'
 import { verifyToken } from '../../utils/jwt'
-import Link from 'next/link'
-import { Button } from '../../components/Button'
+import { ModalButton } from '../../components/ModalButton'
+import { QRGenerator } from '../../components/QRGenerator'
 
 const getUserName = async (): Promise<string | undefined> => {
   const db = getDB()
@@ -39,11 +39,12 @@ const MyStampsPage: FC = async () => {
       <div className={style.boothList}>
         <BoothList />
       </div>
-      <Link href="/myqr">
-        <Button>
-          스탬프 QR코드 표시
-        </Button>
-      </Link>
+
+      <ModalButton
+        notice="QR 코드를 부스에 보여주세요"
+        buttonLabel="스탬프 QR코드 표시">
+        <QRGenerator />
+      </ModalButton>
     </main>
   )
 }
