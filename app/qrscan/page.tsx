@@ -4,6 +4,7 @@ import style from './style.module.scss'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import type QRScannerComponentOriginal from 'react-qr-barcode-scanner'
+import { Button } from '../../components/Button'
 
 const QRScannerComponent = dynamic<ComponentProps<typeof QRScannerComponentOriginal>>(
   async () => await import('react-qr-barcode-scanner'),
@@ -55,22 +56,22 @@ const QRScanPage: FC = () => {
   }
 
   return (
-    <main className={style.qr}>
-      <p>
-        방문객의 스탬프 QR코드를 스캔하세요
-      </p>
+    <main className={style.container}>
+      <div className={style.camera}>
+        <div className={style.guide}></div>
+        <QRScannerComponent stopStream={isLoading} onUpdate={(_, result) => { void onUpdate(result) }} />
+      </div>
 
-      <QRScannerComponent stopStream={isLoading} onUpdate={(_, result) => { void onUpdate(result) }} />
       {isLoading && (
-        <div>
-          스탬프 찍는중...
+        <div className={style.loading}>
+          처리중...
         </div>
       )}
 
-      <Link href="/boothstamps">
-        <button>
+      <Link className={style.backBtn} href="/boothstamps">
+        <Button>
           돌아가기
-        </button>
+        </Button>
       </Link>
     </main>
   )
