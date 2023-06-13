@@ -1,5 +1,7 @@
+'use client'
+import Image from 'next/image'
 import style from './style.module.scss'
-import { type FC, type ReactNode } from 'react'
+import { useRef, type FC, type ReactNode } from 'react'
 
 interface Props {
   children?: ReactNode
@@ -16,6 +18,8 @@ export const Modal: FC<Props> = ({
   children,
   notice
 }) => {
+  const emojiIndex = useRef(Math.floor(Math.random() * 7) + 1)
+
   if (!isOpened)
     return <></>
 
@@ -23,6 +27,7 @@ export const Modal: FC<Props> = ({
     <div className={style.container}>
       <div onClick={onClose} className={style.background}></div>
       <div className={style.content}>
+        <Image className={style.emoji} width={59} height={40} src={`/assets/emojis/emoji${emojiIndex.current}.svg`} alt="" />
         <div className={style.card}>
           <div className={style.inner}>
             {children}

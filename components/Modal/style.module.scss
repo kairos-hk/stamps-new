@@ -14,22 +14,30 @@
     z-index: 10;
     width: 100%;
     height: 100%;
-    background-color: opacify(#19191900, $amount: 0.60);
+    background-color: opacify(#19191900, $amount: 0.80);
   }
 
   .content {
     position: absolute;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    align-items: center;
     z-index: 20;
     width: 100%;
     max-width: 317px;
+ 
+    .emoji {
+      width: 59px;
+      height: 40px;
+      transform: translateY(10px);
+      image-rendering: pixelated;
+    }
 
     .card {
       width: 100%;
       height: calc(317px + 60px);
       background-color: white;
+      position: relative;
 
       display: flex;
       flex-direction: column;
@@ -53,7 +61,9 @@
     }
 
     .notice {
+      align-self: start;
       color: white;
+      margin-top: 5px;
       &::before {
         content: '* ';
         color: red;

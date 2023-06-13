@@ -1,0 +1,26 @@
+.logo {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  
+  .character {
+    transform: rotateY(180deg);
+  }
+
+  .top {
+    font-size: 14px;
+    color: var(--color-primary);
+  }
+
+  .bottom {
+    font-size: 24px;
+    
+    span:nth-child(1) {
+      color: #078C19;
+    }
+
+    span:nth-child(2) {
+      color: #8C076B;
+    }
+  }
+}

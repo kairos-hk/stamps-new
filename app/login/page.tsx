@@ -8,6 +8,7 @@ import { type FormEvent, type FC, useState } from 'react'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
 import Link from 'next/link'
+import { Logo } from '../../components/Logo'
 
 const LoginPage: FC = () => {
   const router = useRouter()
@@ -51,6 +52,15 @@ const LoginPage: FC = () => {
         return
       }
 
+      const redirectTarget =
+        new URL(window.location.href)
+          .searchParams.get('redirect')
+
+      if (redirectTarget !== null) {
+        router.replace(redirectTarget)
+        return
+      }
+
       router.replace('/')
     })()
   }
@@ -60,7 +70,7 @@ const LoginPage: FC = () => {
       <form onSubmit={onSubmit}>
         <div className={style.inputs}>
           <h1>
-            <Image src="/assets/logo.png" width={151} height={48} alt="2023 경상북도교육청 직업교육박람회" />
+            <Logo />
           </h1>
 
           <label>

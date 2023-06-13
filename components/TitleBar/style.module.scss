@@ -1,0 +1,29 @@
+.titlebar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    padding: 17px 0px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  button, a {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+  }
+
+  .logout, .user {
+    width: 24px;
+    height: 24px;
+    box-sizing: border-box;
+    padding: 2px;
+  }
+
+  .logout {
+    rotate: 180deg;
+  }
+}

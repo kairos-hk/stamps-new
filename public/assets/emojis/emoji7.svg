@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 105.85 73.71">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #0083ca;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-4 {
+        fill: #f26522;
+      }
+
+      .cls-5, .cls-6 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-7 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-6 {
+        stroke-width: 2px;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="7.92" y1="12.89" x2="14.73" y2="20.17" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0083ca"/>
+      <stop offset="1" stop-color="#006cb7"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="98.58" y1="13.09" x2="89.87" y2="20.54" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <path class="cls-7" d="m18.5,16.63c0,3.91-3.17,7.09-7.08,7.09s-7.09-3.17-7.09-7.09,3.17-7.09,7.09-7.09,7.08,3.17,7.08,7.09Z"/>
+        <path class="cls-2" d="m101.52,16.63c0,3.91-3.17,7.09-7.09,7.09s-7.09-3.17-7.09-7.09,3.17-7.09,7.09-7.09,7.09,3.17,7.09,7.09Z"/>
+      </g>
+      <path class="cls-1" d="m101.85,72.08c2.28-7.85,4-14.73,4-22.06C105.85-1.56,52.93,0,52.93,0,52.93,0,0-1.56,0,50.02c0,7.23,1.68,14.02,3.91,21.73,16.96,1.45,52.14,3.4,97.95.33Z"/>
+      <path class="cls-3" d="m64.57,40.13c0,4.38-5.21,7.94-11.64,7.94s-11.64-3.55-11.64-7.94,5.21-7.94,11.64-7.94,11.64,3.55,11.64,7.94Z"/>
+      <path d="m56.9,35.76c0,1.32-1.78,2.38-3.97,2.38s-3.97-1.07-3.97-2.38,1.78-2.38,3.97-2.38,3.97,1.07,3.97,2.38Z"/>
+      <path class="cls-5" d="m48.18,39.28s.03,3.91,4.73,3.91,4.76-3.91,4.76-3.91"/>
+      <g>
+        <path class="cls-4" d="m22.87,44.98c0,2.68-3,4.85-6.7,4.85s-6.7-2.17-6.7-4.85,3-4.85,6.7-4.85,6.7,2.17,6.7,4.85Z"/>
+        <path class="cls-4" d="m96.38,44.98c0,2.68-3,4.85-6.7,4.85s-6.7-2.17-6.7-4.85,3-4.85,6.7-4.85,6.7,2.17,6.7,4.85Z"/>
+      </g>
+      <g>
+        <line class="cls-6" x1="16.52" y1="32.19" x2="36.69" y2="32.19"/>
+        <line class="cls-6" x1="69.17" y1="32.19" x2="89.33" y2="32.19"/>
+      </g>
+    </g>
+  </g>
+</svg>

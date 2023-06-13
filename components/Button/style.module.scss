@@ -1,15 +1,28 @@
-.button {
-  width: 100%;
-  height: 60px;
+.container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  color: white;
-  background-color: var(--color-primary);
-  border-radius: var(--radius-common);
-  cursor: pointer;
-
-  &:disabled {
+  
+  &.disabled {
     opacity: 0.5;
+  }
+
+  .emoji {
+    width: 59px;
+    height: 40px;
+    transform: translateY(10px);
+    image-rendering: pixelated;
+  }
+
+  .button {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: var(--color-primary);
+    border-radius: var(--radius-common);
+    cursor: pointer;
   }
 }

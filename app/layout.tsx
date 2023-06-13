@@ -3,6 +3,7 @@ import style from './layout.module.scss'
 
 import clsx from 'clsx'
 import { type Metadata } from 'next'
+import NextTopLoader from 'nextjs-toploader'
 import { type ReactNode, type FC } from 'react'
 
 import { Noto_Sans_KR } from 'next/font/google'
@@ -20,6 +21,9 @@ interface Props {
 const RootLayout: FC<Props> = ({ children }) =>
   <html lang="ko" className={clsx(notoSansKR.className, style.container)}>
     <body className={style.content}>
+      <NextTopLoader
+        showSpinner={false}
+        color="#0083CA" />
       {children}
     </body>
   </html>

@@ -3,18 +3,20 @@ import { EdgeUserType, edgeGetUserType } from './utils/edge'
 
 const allowedPaths = {
   [EdgeUserType.UNLOGINED]: ['/login', '/login_admin'],
-  [EdgeUserType.VISITOR]: ['/mystamps'],
+  [EdgeUserType.VISITOR]: ['/mystamps', '/quizs', '/quizscan', '/solvequiz'],
   [EdgeUserType.BOOTH_MANAGER]: ['/boothstamps', '/qrscan']
 }
 
 export const middleware: NextMiddleware = async (request) => {
   const userType = edgeGetUserType(request.cookies)
+  const createParam = (): string =>
+    `?redirect=${request.nextUrl.pathname}${request.nextUrl.search}`
 
   if (allowedPaths[userType].includes(request.nextUrl.pathname))
     return NextResponse.next()
 
   if (userType === EdgeUserType.UNLOGINED)
-    return NextResponse.redirect(new URL('/login', request.url))
+    return NextResponse.redirect(new URL(`/login${createParam()}`, request.url))
 
   if (userType === EdgeUserType.VISITOR)
     return NextResponse.redirect(new URL('/mystamps', request.url))

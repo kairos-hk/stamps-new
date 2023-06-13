@@ -13,18 +13,18 @@ export const GET = async (): Promise<NextResponse> => {
   if (tokenData === undefined)
     return NextResponse.json([])
 
-  const booths = await db
-    .select('booths.booth_name', 'stamps.stamp_id')
-    .from('booths')
-    .orderBy('booths.booth_id')
-    .leftJoin('stamps', function () {
-      this.on('booths.booth_id', 'stamps.booth_id')
-      this.andOnVal('stamps.user_id', tokenData.userId)
+  const questions = await db
+    .select('questions.question_name', 'quizs.quizs_id')
+    .from('questions')
+    .orderBy('questions.question_id')
+    .leftJoin('quizs', function () {
+      this.on('quizs.question_id', 'questions.question_id')
+      this.andOnVal('quizs.user_id', tokenData.userId)
     })
 
-  const boothData = booths.map((booth) => ({
-    boothName: booth.booth_name,
-    isStamped: booth.stamp_id !== null
+  const boothData = questions.map((question) => ({
+    questionName: question.question_name,
+    isStamped: question.quizs_id !== null
   }))
 
   return NextResponse.json(boothData)
