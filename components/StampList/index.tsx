@@ -24,8 +24,10 @@ const StampList: FC = () => {
   }
 
   const calcSysPass = (index: number) => () => {
-    const nextSysPass = `${(index + 1)}${sysPass}`.slice(0, 4)
-    if (nextSysPass === '1324')
+    const nextSysPass = `${(index + 1)}${sysPass}`.slice(0, 10)
+    console.log('Debug pass: %d', nextSysPass)
+
+    if (nextSysPass.startsWith('1324'))
       logout()
 
     setSysPass(nextSysPass)

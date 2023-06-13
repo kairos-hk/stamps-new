@@ -22,6 +22,13 @@ export const POST = async (request: NextRequest): Promise<NextResponse> => {
   const boothId = foundUser?.booth_id
 
   if (userId === undefined) {
+    if (body.isAdminLogin === true) {
+      return NextResponse.json({
+        success: false,
+        message: 'NOT_REGISTED_ADMIN'
+      }, { status: 400 })
+    }
+
     [userId] = await db
       .insert({
         user_name: body.userName,
@@ -34,7 +41,7 @@ export const POST = async (request: NextRequest): Promise<NextResponse> => {
 
   const sessionToken = createToken(userId, boothId ?? undefined)
   return NextResponse.json(
-    { success: true },
+    { success: true, isRegist: foundUser === undefined },
     { headers: { 'Set-Cookie': `SESSION_TOKEN=${sessionToken};path=/` } }
   )
 }

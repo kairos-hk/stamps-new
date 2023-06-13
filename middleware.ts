@@ -2,7 +2,7 @@ import { NextResponse, type NextMiddleware } from 'next/server'
 import { EdgeUserType, edgeGetUserType } from './utils/edge'
 
 const allowedPaths = {
-  [EdgeUserType.UNLOGINED]: ['/login'],
+  [EdgeUserType.UNLOGINED]: ['/login', '/login_admin'],
   [EdgeUserType.VISITOR]: ['/mystamps'],
   [EdgeUserType.BOOTH_MANAGER]: ['/boothstamps', '/qrscan']
 }

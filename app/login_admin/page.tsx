@@ -12,7 +12,6 @@ import Link from 'next/link'
 const LoginPage: FC = () => {
   const router = useRouter()
   const [userName, setUserName] = useState('')
-  const [userGroup, setUserGroup] = useState('')
   const [userPhone, setUserPhone] = useState('')
   const [isDisabled, setIsDisabled] = useState(false)
 
@@ -22,14 +21,8 @@ const LoginPage: FC = () => {
     if (isDisabled) return
     setIsDisabled(true)
 
-    if (userName.length < 1 || userGroup.length < 1 || userPhone.length < 1) {
+    if (userName.length < 1 || userPhone.length < 1) {
       alert('입력란을 모두 입력해 주세요')
-      setIsDisabled(false)
-      return
-    }
-
-    if (!/^\d{11}$/.test(userPhone)) {
-      alert('전화번호가 잘못 입력되었습니다')
       setIsDisabled(false)
       return
     }
@@ -40,13 +33,14 @@ const LoginPage: FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           userName,
-          userGroup,
-          userPhone
+          userGroup: 'a',
+          userPhone,
+          isAdmin: true
         })
       })
 
       if (!res.ok) {
-        alert('이미 해당 전화번호로 가입된 사용자가 있습니다. 모든 입력란을 정확히 입력했는지 다시 한번 확인해 주세요.')
+        alert('모든 입력란을 정확히 입력했는지 다시 한번 확인해 주세요.')
         setIsDisabled(false)
         return
       }
@@ -64,36 +58,24 @@ const LoginPage: FC = () => {
           </h1>
 
           <label>
-            <p>성명</p>
+            <p>아이디</p>
             <Input
               type="text"
               value={userName}
               disabled={isDisabled}
-              placeholder="박OO (띄워쓰기 없이 입력)"
+              placeholder="여기를 눌러 아이디 입력"
               maxLength={30}
-              onChange={(e) => { setUserName(e.target.value.replace(' ', '')) }} />
+              onChange={(e) => { setUserName(e.target.value) }} />
           </label>
 
           <label>
-            <p>소속명 (학교명)</p>
+            <p>비밀번호</p>
             <Input
-              type="text"
-              value={userGroup}
-              disabled={isDisabled}
-              placeholder="OO중학교 (띄워쓰기 없이 입력)"
-              maxLength={30}
-              onChange={(e) => { setUserGroup(e.target.value.replace(' ', '')) }} />
-          </label>
-
-          <label>
-            <p>전화번호</p>
-            <Input
-              type="tel"
               value={userPhone}
               disabled={isDisabled}
-              placeholder="01012345678 (- 없이 입력)"
+              placeholder="여기를 눌러 비밀번호 입력"
               maxLength={30}
-              onChange={(e) => { setUserPhone(e.target.value.replace(/[^\d]/, '')) }} />
+              onChange={(e) => { setUserPhone(e.target.value) }} />
           </label>
 
           <div className={style.credit}>
@@ -112,10 +94,10 @@ const LoginPage: FC = () => {
         <Button
           type="submit"
           disabled={isDisabled}>
-          시작하기
-        </Button>
-        <Link className={style.admin} href="/login_admin">
           관리자 로그인
+        </Button>
+        <Link className={style.admin} href="/login">
+          돌아가기
         </Link>
       </form>
     </main>

@@ -3,9 +3,9 @@
 
   form {
     display: flex;
+    gap: 20px;
     flex-direction: column;
     justify-content: center;
-    gap: 20px;
     height: 100%;
 
     h1 > img {
@@ -15,11 +15,11 @@
 
     .inputs {
       flex-grow: 1;
-      overflow-y: auto;
 
       display: flex;
       flex-direction: column;
       gap: 24px;
+      overflow-y: auto;
       padding-top: 84px;
       align-items: center;
       

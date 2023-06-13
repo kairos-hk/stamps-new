@@ -5,6 +5,7 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import type QRScannerComponentOriginal from 'react-qr-barcode-scanner'
 import { Button } from '../../components/Button'
+import { useSearchParams } from 'next/navigation'
 
 const QRScannerComponent = dynamic<ComponentProps<typeof QRScannerComponentOriginal>>(
   async () => await import('react-qr-barcode-scanner'),
@@ -18,6 +19,7 @@ interface StampData {
 }
 
 const QRScanPage: FC = () => {
+  const searchParams = useSearchParams()
   const [isLoading, setIsLoading] = useState(false)
 
   const onUpdate = async (result: any): Promise<void> => {
@@ -32,7 +34,7 @@ const QRScanPage: FC = () => {
 
     if (userId === null) {
       alert('잘못된 형식의 QR코드입니다. 다시시도해 주세요.')
-      window.location.reload()
+      window.location.replace(location.pathname)
       return
     }
 
@@ -46,13 +48,19 @@ const QRScanPage: FC = () => {
 
     if (!userDataRes.ok) {
       alert('이미 찍은 스탬프입니다.')
-      window.location.reload()
+      window.location.replace(location.pathname)
       return
     }
 
     const userData = (await userDataRes.json()).userData as StampData
     alert(`스탬프를 찍었습니다.\n\n[방문객 정보]\n성함: ${userData.userName}\n소속(학교명): ${userData.userGroup}\n전화번호: ${userData.userPhone}`)
-    window.location.reload()
+    window.location.replace(location.pathname)
+  }
+
+  const userId = searchParams.get('userId')
+  if (userId !== null) {
+    void onUpdate(`https://example.com/?userId=${userId}`)
+    return <></>
   }
 
   return (
