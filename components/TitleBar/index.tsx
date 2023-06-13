@@ -6,9 +6,10 @@ import { type FC, type ReactNode } from 'react'
 
 interface Props {
   children: ReactNode
+  disableUserInfo?: boolean
 }
 
-export const TitleBar: FC <Props> = ({ children }) => {
+export const TitleBar: FC <Props> = ({ children, disableUserInfo = false }) => {
   const onClick = (): void => {
     document.cookie = 'SESSION_TOKEN=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
     window.location.assign('/')
@@ -28,14 +29,16 @@ export const TitleBar: FC <Props> = ({ children }) => {
 
       <h1>{children}</h1>
 
-      <Link href="/userinfo">
-        <Image
-          className={style.user}
-          src="/assets/user.svg"
-          alt="유저정보 수정"
-          width={24}
-          height={24} />
-      </Link>
+      {!disableUserInfo && (
+        <Link href="/userinfo">
+          <Image
+            className={style.user}
+            src="/assets/user.svg"
+            alt="유저정보 수정"
+            width={24}
+            height={24} />
+        </Link>
+      )}
     </nav>
   )
 }

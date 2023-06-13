@@ -9,7 +9,7 @@ import { TitleBar } from '../../components/TitleBar'
 const BoothStampsPage: FC = () => {
   return (
     <main className={style.container}>
-      <TitleBar>스탬프 기록</TitleBar>
+      <TitleBar disableUserInfo>스탬프 기록</TitleBar>
       <div className={style.stampList}>
         <StampList />
       </div>

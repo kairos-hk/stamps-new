@@ -3,7 +3,7 @@ import { EdgeUserType, edgeGetUserType } from './utils/edge'
 
 const allowedPaths = {
   [EdgeUserType.UNLOGINED]: ['/login', '/login_admin'],
-  [EdgeUserType.VISITOR]: ['/mystamps', '/quizs', '/quizscan', '/solvequiz'],
+  [EdgeUserType.VISITOR]: ['/mystamps', '/quizs', '/quizscan', '/solvequiz', '/userinfo'],
   [EdgeUserType.BOOTH_MANAGER]: ['/boothstamps', '/qrscan']
 }
 
