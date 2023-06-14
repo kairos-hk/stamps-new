@@ -39,6 +39,10 @@ export const TitleBar: FC <Props> = ({ children, disableUserInfo = false }) => {
             height={24} />
         </Link>
       )}
+
+      {disableUserInfo && (
+        <div></div>
+      )}
     </nav>
   )
 }
