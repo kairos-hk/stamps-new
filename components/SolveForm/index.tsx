@@ -51,7 +51,7 @@ export const SolveFrom: FC<Props> = ({ question }) => {
   return (
     <>
       <div className={style.solveForm}>
-        <h2><span>{question.questionId + 1}.</span> {question.questionContent}</h2>
+        <h2><span>{question.questionId}.</span> {question.questionContent}</h2>
         <Image src="/assets/characters/char2.svg" width={200} height={260} alt="" />
       </div>
 
