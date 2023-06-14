@@ -35,7 +35,7 @@ export const QRGenerator: FC = async () => {
   return (
     <Image
       className={style.qr}
-      alt="스템프용 QR 코드"
+      alt="스탬프용 QR 코드"
       height={100} width={100} src={qrCode} />
   )
 }

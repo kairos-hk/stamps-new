@@ -31,6 +31,6 @@ const RootLayout: FC<Props> = ({ children }) =>
 export default RootLayout
 
 export const metadata: Metadata = {
-  title: '2023 경상북도교육청 직업교육박람회 스템프',
+  title: '2023 경상북도교육청 직업교육박람회 스탬프',
   description: '체험하고~ 선물도 받자!'
 }
