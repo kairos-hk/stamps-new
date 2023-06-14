@@ -1,13 +1,13 @@
 # 2023 경상북도교육청 직업교육박람회 - 굿자비 스탬프
 
-![image](https://github.com/pmh-only/stamps/assets/39158228/4ec887f3-0578-4dc9-9869-1eceaeaa2853)
+![image](https://github.com/pmh-only/stamps/assets/39158228/afc1961d-4937-4ad6-aa17-4ef6c4068ff1)
 
 경상북도교육청이 주최하는 **2023 경상북도교육청 직업교육박람회**에서 진행하는 부스 스탬프 모으기 & 퀴즈 풀기 행사를 위한 웹사이트 어플리케이션입니다.
 
 ## 주요 화면
-| ![image](https://github.com/pmh-only/stamps/assets/39158228/bf56c258-927e-4ec4-9913-9a3a1043b65c) | ![image](https://github.com/pmh-only/stamps/assets/39158228/12c45c82-b0ae-41a6-82cb-bfc89e9be84d) | ![image](https://github.com/pmh-only/stamps/assets/39158228/af86e5d6-6a85-4e73-b97e-50d7f4f9efa3) |
+| ![image](https://github.com/pmh-only/stamps/assets/39158228/58e49831-6160-454e-9db2-dea40819c1a0) | ![image](https://github.com/pmh-only/stamps/assets/39158228/da5f0c66-67af-4bae-8757-6a21a4349451) | ![image](https://github.com/pmh-only/stamps/assets/39158228/53bffde0-d723-4cf5-a6ed-37ed0aefec30) |
 |-|-|-|
-| ![image](https://github.com/pmh-only/stamps/assets/39158228/3cc6638a-422d-4418-a981-5d2cd232f0e9) | ![image](https://github.com/pmh-only/stamps/assets/39158228/2b30c6bf-a5d4-4d2c-afdc-4fa8b0867615) | ![image](https://github.com/pmh-only/stamps/assets/39158228/1e8a4782-5394-4e4d-a31c-c56258bba689) |
+| ![image](https://github.com/pmh-only/stamps/assets/39158228/3c841a8d-ef51-4ff6-893f-e5892e1dda46) | ![image](https://github.com/pmh-only/stamps/assets/39158228/cc5af99a-3a59-4d65-8be1-49d11efe5889) | ![image](https://github.com/pmh-only/stamps/assets/39158228/2436fb2f-ce84-419e-bed3-b344e03d7fc1) |
 
 ## 저작권 안내
 * 개발: @pmh-only
@@ -18,5 +18,5 @@
   (단, 캐릭터 이미지(굿자비) 및 로고 제거 후 사용 가능)
 
 ## 유관 기관
-<img src="https://github.com/pmh-only/stamps/assets/39158228/c75ada59-c6e3-45f6-ab23-3e96dac81898" width="300" />
-<img src="https://github.com/pmh-only/stamps/assets/39158228/72c4fd39-5edc-46de-b789-a4916a733287" width="300" />
+<img src="https://github.com/pmh-only/stamps/assets/39158228/8d7324ca-8bbd-4d54-9427-065928dac277" width="300" />
+<img src="https://github.com/pmh-only/stamps/assets/39158228/5fa5f170-8e0c-469d-9a1c-0990be0d5c73" width="300" />
