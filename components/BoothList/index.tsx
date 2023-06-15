@@ -1,19 +1,23 @@
 'use client'
+import clsx from 'clsx'
 import style from './style.module.scss'
 
 import { useState, type FC } from 'react'
 import useSWR from 'swr'
+import { Button } from '../Button'
 
 const fetcher = async (url: string): Promise<any> =>
   await fetch(url).then(async (res) => await res.json())
 
 interface BoothData {
   boothName: string
-  isStamped: boolean
+  stampId: number | null
 }
 
 const BoothList: FC = () => {
   const [sysPass, setSysPass] = useState('')
+  const [deleteSelect, setDeleteSelect] = useState<number[]>([])
+  const [deleteMode, setDeleteMode] = useState(false)
   const { data, mutate } = useSWR<BoothData[]>('/api/booth', fetcher, {
     refreshInterval: 10
   })
@@ -23,15 +27,40 @@ const BoothList: FC = () => {
     window.location.reload()
   }
 
-  const deleteStamp = async (): Promise<void> => {
-    await fetch('/api/stamp', {
-      method: 'DELETE'
-    })
+  const deleteStamp = (): void => {
+    void (async () => {
+      await fetch('/api/stampdel', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          selected: deleteSelect.map((v) => data?.[v].stampId)
+        })
+      })
 
-    await mutate()
+      await mutate()
+
+      setDeleteMode(false)
+      setDeleteSelect([])
+    })()
   }
 
   const calcSysPass = (index: number) => () => {
+    if (deleteMode) {
+      if (deleteSelect.includes(index)) {
+        setDeleteSelect([
+          ...deleteSelect.filter((v) => v !== index)
+        ])
+
+        return
+      }
+
+      setDeleteSelect([
+        ...deleteSelect,
+        index
+      ])
+      return
+    }
+
     const nextSysPass = `${(index + 1)}${sysPass}`.slice(0, 10)
     console.log('Debug pass: %d', nextSysPass)
 
@@ -39,19 +68,26 @@ const BoothList: FC = () => {
       logout()
 
     if (nextSysPass.startsWith('449151'))
-      void deleteStamp()
+      setDeleteMode(true)
 
     setSysPass(nextSysPass)
   }
 
   return (
     <section>
+      {deleteMode && (
+        <div className={style.deleteMode}>
+          <p>[삭제모드] 삭제할 스탬프를 터치로 선택 후 삭제 버튼을 누르세요 (선택됨: {deleteSelect.length}개)</p>
+          <Button onClick={deleteStamp}>삭제</Button>
+        </div>
+      )}
+
       <ul className={style.grid}>
         {data?.map((booth, i) => (
-          <li key={i} onClick={calcSysPass(i)}>
+          <li key={i} className={clsx(deleteSelect.includes(i) && style.deleteBg)} onClick={calcSysPass(i)}>
             <p>{booth.boothName}</p>
 
-            {booth.isStamped && (
+            {booth.stampId !== null && (
               <div className={style.doneBg}>
                 <div className={style.doneStamp}>
                   <p>

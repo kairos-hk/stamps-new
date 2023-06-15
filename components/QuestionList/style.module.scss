@@ -1,3 +1,8 @@
+.deleteMode {
+  --color-primary: #ed4949;
+  padding: 10px 0px;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -55,7 +60,17 @@
       }
     }
   }
+
+  .deleteBg {
+    background-color: #ed4949;
+
+    .doneBg { 
+      background-color: transparent;
+    }
+  }
 }
+
+
 
 @keyframes dummy-animation {
   0%{ background-position: -650px 0; }

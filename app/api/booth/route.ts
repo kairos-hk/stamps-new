@@ -24,7 +24,7 @@ export const GET = async (): Promise<NextResponse> => {
 
   const boothData = booths.map((booth) => ({
     boothName: booth.booth_name,
-    isStamped: booth.stamp_id !== null
+    stampId: booth.stamp_id
   }))
 
   return NextResponse.json(boothData)
