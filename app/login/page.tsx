@@ -36,17 +36,16 @@ const LoginPage: FC = () => {
     }
 
     void (async () => {
-      const res = await fetch('/api/login', {
+      const res = await fetch('/api/checkusr', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           userName,
-          userGroup,
           userPhone
         })
-      })
+      }).then(async (res) => await res.json())
 
-      if (!res.ok) {
+      if (res.type === 'WRONG') {
         alert('이미 해당 전화번호로 가입된 사용자가 있습니다. 모든 입력란을 정확히 입력했는지 다시 한번 확인해 주세요.')
         setIsDisabled(false)
         return
@@ -54,14 +53,26 @@ const LoginPage: FC = () => {
 
       const redirectTarget =
         new URL(window.location.href)
-          .searchParams.get('redirect')
+          .searchParams.get('redirect') ?? '/'
 
-      if (redirectTarget !== null) {
+      if (res.type === 'ALREADY') {
+        await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            userName,
+            userGroup,
+            userPhone
+          })
+        })
+
         router.replace(redirectTarget)
-        return
       }
 
-      router.replace('/')
+      if (res.type === 'NEW') {
+        const data = btoa(encodeURIComponent(JSON.stringify({ userName, userGroup, userPhone })))
+        router.replace(`/tos?data=${data}&redirect=${redirectTarget}`)
+      }
     })()
   }
 

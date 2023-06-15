@@ -1,0 +1,106 @@
+.tos {
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  ul {
+    list-style: none;
+    
+    li {
+      padding: 4px 0px;
+
+      label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--color-secondary);
+        box-sizing: border-box;
+        border-radius: var(--radius-common);
+        gap: 14px;
+        color: var(--color-primary);
+        
+        input {
+          display: none;
+          
+          ~ .checkbox {
+            margin: 25px 14px;
+            margin-right: 0px;
+
+            width: 24px;
+            height: 24px;
+            background-color: transparent;
+            border-radius: var(--radius-common);
+            border: 1px solid var(--color-text-secondary);
+          }
+
+          &:checked ~ .checkbox {
+            background-color: var(--color-primary);
+            border: none;
+
+            &::after {
+              content: '';
+              position: absolute;
+              background-image: url('/assets/check.svg');
+              background-position: center;
+              background-size: 10px;
+              background-repeat: no-repeat;
+              width: 24px;
+              height: 24px;
+            }
+          }
+        }
+
+        p {
+          flex-grow: 1;
+        }
+
+        .expand {
+          cursor: pointer;
+          padding: 0px 14px;
+          align-self: stretch;
+
+          &.expanded {
+            transform: rotate(180deg);
+          }
+        }
+      }
+
+      pre {
+        margin: 0;
+        white-space: pre-wrap;
+        font-family: inherit;
+        background-color: var(--color-secondary);
+        padding: 14px;
+        padding-top: 0px;
+        border-bottom-left-radius: var(--radius-common);
+        border-bottom-right-radius: var(--radius-common);
+      }
+
+      &:first-child {
+        font-size: 18px;
+        font-weight: 700;
+        
+        label {
+          color: var(--color-text);
+          
+          .checkbox {
+            border-radius: 9999px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.back {
+  display: inline-block;
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+  color: var(--color-primary);
+  text-decoration: underline solid var(--color-primary);
+}

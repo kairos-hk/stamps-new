@@ -24,5 +24,9 @@
     background-color: var(--color-primary);
     border-radius: var(--radius-common);
     cursor: pointer;
+
+    &:disabled {
+      cursor: default;
+    }
   }
 }
