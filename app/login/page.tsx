@@ -3,7 +3,7 @@
 import style from './style.module.scss'
 
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { type FormEvent, type FC, useState } from 'react'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
@@ -12,6 +12,7 @@ import { Logo } from '../../components/Logo'
 
 const LoginPage: FC = () => {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [userName, setUserName] = useState('')
   const [userGroup, setUserGroup] = useState('')
   const [userPhone, setUserPhone] = useState('')
@@ -52,8 +53,7 @@ const LoginPage: FC = () => {
       }
 
       const redirectTarget =
-        new URL(window.location.href)
-          .searchParams.get('redirect') ?? '/'
+        searchParams.get('redirect') ?? '/'
 
       if (res.type === 'ALREADY') {
         await fetch('/api/login', {
@@ -66,7 +66,7 @@ const LoginPage: FC = () => {
           })
         })
 
-        router.replace(redirectTarget)
+        window.location.assign(redirectTarget)
       }
 
       if (res.type === 'NEW') {
@@ -135,7 +135,7 @@ const LoginPage: FC = () => {
           disabled={isDisabled}>
           시작하기
         </Button>
-        <Link className={style.admin} href="/login_admin">
+        <Link className={style.admin} href={`/login_admin?redirect=${searchParams.get('redirect') ?? '/'}`}>
           관리자 로그인
         </Link>
       </form>

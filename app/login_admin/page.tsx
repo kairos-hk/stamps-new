@@ -3,7 +3,7 @@
 import style from './style.module.scss'
 
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { type FormEvent, type FC, useState } from 'react'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
@@ -11,7 +11,7 @@ import Link from 'next/link'
 import { Logo } from '../../components/Logo'
 
 const LoginPage: FC = () => {
-  const router = useRouter()
+  const searchParams = useSearchParams()
   const [userName, setUserName] = useState('')
   const [userPhone, setUserPhone] = useState('')
   const [isDisabled, setIsDisabled] = useState(false)
@@ -46,7 +46,10 @@ const LoginPage: FC = () => {
         return
       }
 
-      router.replace('/')
+      const redirectTarget =
+        searchParams.get('redirect') ?? '/'
+
+      window.location.assign(redirectTarget)
     })()
   }
 
@@ -97,7 +100,7 @@ const LoginPage: FC = () => {
           disabled={isDisabled}>
           관리자 로그인
         </Button>
-        <Link className={style.admin} href="/login">
+        <Link className={style.admin} href={`/login?redirect=${searchParams.get('redirect') ?? '/'}`}>
           돌아가기
         </Link>
       </form>

@@ -46,7 +46,7 @@ export const TosList: FC = () => {
         body
       })
 
-      router.replace(redirectTarget)
+      window.location.assign(redirectTarget)
     })()
   }
 
