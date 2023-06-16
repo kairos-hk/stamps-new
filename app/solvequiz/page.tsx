@@ -3,8 +3,10 @@ import style from './style.module.scss'
 import { type FC } from 'react'
 import { TitleBar } from '../../components/TitleBar'
 import { getDB } from '../../utils/dbconn'
-import Link from 'next/link'
 import { SolveFrom } from '../../components/SolveForm'
+import { verifyToken } from '../../utils/jwt'
+import { cookies } from 'next/dist/client/components/headers'
+import Alert from '../../components/Alert'
 
 export interface QuestionData {
   questionId: number
@@ -12,33 +14,43 @@ export interface QuestionData {
   isCorrect: boolean
 }
 
-const getQuestion = async (questionId: number): Promise<QuestionData | undefined> => {
-  if (isNaN(questionId))
-    return undefined
+const getQuestion = async (): Promise<QuestionData | undefined> => {
+  const cookieStore = cookies()
+  const sessionToken = cookieStore.get('SESSION_TOKEN')?.value ?? ''
 
   const db = getDB()
+  const tokenData = verifyToken(sessionToken)
+
+  if (tokenData === undefined)
+    return undefined
+
   const question = await db
-    .select('question_content', 'correct_question')
+    .select('questions.question_id', 'questions.question_content', 'questions.correct_question')
     .from('questions')
-    .where('question_id', questionId)
+    .orderByRaw('RAND()')
+    .leftJoin('quizs', function () {
+      this.on('quizs.question_id', 'questions.question_id')
+      this.andOnVal('quizs.user_id', tokenData.userId)
+    })
+    .whereNull('quizs.quizs_id')
     .first()
 
   if (question === undefined)
     return undefined
 
   return {
-    questionId,
+    questionId: question.question_id,
     questionContent: question.question_content,
     isCorrect: question.correct_question
   }
 }
 
 /* @ts-expect-error Async Server Component */
-const MyStampsPage: FC<any> = async ({ searchParams }) => {
-  const question = await getQuestion(parseInt(atob(searchParams.questionId)))
+const MyStampsPage: FC = async () => {
+  const question = await getQuestion()
 
   if (question === undefined)
-    return <Link href="/">부정이 감지되었습니다. 여기를 눌러 돌아가기</Link>
+    return <Alert message="이미 모든 문제를 해결하였습니다!"/>
 
   return (
     <main className={style.container}>
