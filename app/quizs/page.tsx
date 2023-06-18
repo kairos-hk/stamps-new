@@ -22,7 +22,7 @@ const MyStampsPage: FC = () => {
         </Link>
 
         <Link className={style.quiz} href="/">
-          돌아가
+          돌아가기
         </Link>
       </div>
     </main>
