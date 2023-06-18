@@ -3,7 +3,7 @@ import { EdgeUserType, edgeGetUserType } from './utils/edge'
 
 const allowedPaths = {
   [EdgeUserType.UNLOGINED]: ['/login', '/login_admin', '/tos'],
-  [EdgeUserType.VISITOR]: ['/mystamps', '/quizs', '/quizscan', '/solvequiz', '/userinfo'],
+  [EdgeUserType.VISITOR]: ['/mystamps', '/quizs', '/quizscan', '/solvequiz', '/userinfo', '/selmenu'],
   [EdgeUserType.BOOTH_MANAGER]: ['/boothstamps', '/qrscan']
 }
 
@@ -19,7 +19,7 @@ export const middleware: NextMiddleware = async (request) => {
     return NextResponse.redirect(new URL(`/login${createParam()}`, request.url))
 
   if (userType === EdgeUserType.VISITOR)
-    return NextResponse.redirect(new URL('/mystamps', request.url))
+    return NextResponse.redirect(new URL('/selmenu', request.url))
 
   if (userType === EdgeUserType.BOOTH_MANAGER)
     return NextResponse.redirect(new URL('/boothstamps', request.url))

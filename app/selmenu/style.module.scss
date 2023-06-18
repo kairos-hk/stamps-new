@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .content {
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow-y: auto; 
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    gap: 28px;
+
+    p {
+      color: var(--color-text-secondary);
+      margin-top: 6px;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .buttonbar {
+    display: flex;
+    gap: 5px;
+
+    a {
+      flex: 1;
+    }
+
+    a:last-child {
+      --color-primary: #645FAA;
+    }
+  }
+}

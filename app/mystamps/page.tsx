@@ -49,8 +49,8 @@ const MyStampsPage: FC = async () => {
           <QRGenerator />
         </ModalButton>
 
-        <Link className={style.quiz} href="/quizs">
-          문제 목록
+        <Link className={style.quiz} href="/">
+          돌아가기
         </Link>
       </div>
     </main>

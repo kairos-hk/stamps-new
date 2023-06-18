@@ -21,8 +21,8 @@ const MyStampsPage: FC = () => {
           </Button>
         </Link>
 
-        <Link className={style.quiz} href="/mystamps">
-          스탬프 목록
+        <Link className={style.quiz} href="/">
+          돌아가
         </Link>
       </div>
     </main>
