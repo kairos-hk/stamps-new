@@ -1,12 +1,14 @@
 .container {
+  display: flex;
+  flex-direction: column;
   height: 100%;
 
-  form {
+  .form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 20px;
-    height: 100%;
+    flex-grow: 1;
 
     h1 > img {
       width: 151px;
@@ -15,7 +17,6 @@
 
     .inputs {
       flex-grow: 1;
-      overflow-y: auto;
 
       display: flex;
       flex-direction: column;
@@ -64,10 +65,17 @@
       }
     }
 
-    .admin {
+    .buttons {
       text-align: center;
-      color: var(--color-primary);
-      text-decoration: underline solid var(--color-primary);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .admin {
+        text-align: center;
+        color: var(--color-primary);
+        text-decoration: underline solid var(--color-primary);
+      }
     }
   }
 }

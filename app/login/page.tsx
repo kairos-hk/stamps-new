@@ -78,7 +78,7 @@ const LoginPage: FC = () => {
 
   return (
     <main className={style.container}>
-      <form onSubmit={onSubmit}>
+      <form className={style.form} onSubmit={onSubmit}>
         <div className={style.inputs}>
           <h1>
             <Logo />
@@ -130,14 +130,17 @@ const LoginPage: FC = () => {
           </div>
         </div>
 
-        <Button
-          type="submit"
-          disabled={isDisabled}>
-          시작하기
-        </Button>
-        <Link className={style.admin} href={`/login_admin?redirect=${searchParams.get('redirect') ?? '/'}`}>
-          관리자 로그인
-        </Link>
+        <div className={style.buttons}>
+          <Button
+            type="submit"
+            disabled={isDisabled}>
+            시작하기
+          </Button>
+          <Link className={style.admin} href={`/login_admin?redirect=${searchParams.get('redirect') ?? '/'}`}>
+            관리자 로그인
+          </Link>
+          <div></div>
+        </div>
       </form>
     </main>
   )

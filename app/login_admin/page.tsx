@@ -34,9 +34,9 @@ const LoginPage: FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           userName,
-          userGroup: 'a',
+          userGroup: 'temp',
           userPhone,
-          isAdmin: true
+          isAdminLogin: true
         })
       })
 
@@ -55,7 +55,7 @@ const LoginPage: FC = () => {
 
   return (
     <main className={style.container}>
-      <form onSubmit={onSubmit}>
+      <form className={style.form} onSubmit={onSubmit}>
         <div className={style.inputs}>
           <h1>
             <Logo />
@@ -95,14 +95,17 @@ const LoginPage: FC = () => {
           </div>
         </div>
 
-        <Button
-          type="submit"
-          disabled={isDisabled}>
-          관리자 로그인
-        </Button>
-        <Link className={style.admin} href={`/login?redirect=${searchParams.get('redirect') ?? '/'}`}>
-          돌아가기
-        </Link>
+        <div className={style.buttons}>
+          <Button
+            type="submit"
+            disabled={isDisabled}>
+            관리자 로그인
+          </Button>
+          <Link className={style.admin} href={`/login?redirect=${searchParams.get('redirect') ?? '/'}`}>
+            돌아가기
+          </Link>
+          <div></div>
+        </div>
       </form>
     </main>
   )
