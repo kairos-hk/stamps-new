@@ -16,7 +16,8 @@ export const GET = async (): Promise<NextResponse> => {
   const booths = await db
     .select('booths.booth_name', 'stamps.stamp_id')
     .from('booths')
-    .orderBy('booths.booth_id')
+    .orderBy('stamps.stamp_id', 'desc')
+    .orderBy('booths.booth_id', 'asc')
     .leftJoin('stamps', function () {
       this.on('booths.booth_id', 'stamps.booth_id')
       this.andOnVal('stamps.user_id', tokenData.userId)
