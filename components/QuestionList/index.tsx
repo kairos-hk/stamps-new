@@ -1,13 +1,9 @@
 'use client'
 import style from './style.module.scss'
 
-import { useState, type FC } from 'react'
-import useSWR from 'swr'
+import { useState, type FC, useEffect } from 'react'
 import { Button } from '../Button'
 import clsx from 'clsx'
-
-const fetcher = async (url: string): Promise<any> =>
-  await fetch(url).then(async (res) => await res.json())
 
 interface QuestionData {
   questionName: string
@@ -18,9 +14,16 @@ const QuestionList: FC = () => {
   const [sysPass, setSysPass] = useState('')
   const [deleteSelect, setDeleteSelect] = useState<number[]>([])
   const [deleteMode, setDeleteMode] = useState(false)
-  const { data, mutate } = useSWR<QuestionData[]>('/api/question', fetcher, {
-    refreshInterval: 10
-  })
+  const [data, setData] = useState<QuestionData[] | undefined>(undefined)
+
+  const fetchData = (): void => {
+    void (async () => {
+      const data = await fetch('/api/question')
+        .then(async (res) => await res.json())
+
+      setData(data)
+    })()
+  }
 
   const logout = (): void => {
     document.cookie = 'SESSION_TOKEN=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
@@ -37,7 +40,7 @@ const QuestionList: FC = () => {
         })
       })
 
-      await mutate()
+      fetchData()
 
       setDeleteMode(false)
       setDeleteSelect([])
@@ -73,6 +76,8 @@ const QuestionList: FC = () => {
     setSysPass(nextSysPass)
   }
 
+  useEffect(fetchData, [])
+
   return (
     <section>
       {deleteMode && (
@@ -81,6 +86,16 @@ const QuestionList: FC = () => {
           <Button onClick={deleteStamp}>삭제</Button>
         </div>
       )}
+
+      <div className={style.topbar}>
+        {data !== undefined && (
+          <p><b>{data.filter((v) => v.quizsId !== null).length}</b>완료</p>
+        )}
+
+        {data === undefined && (
+          <p className={style.dummy}></p>
+        )}
+      </div>
 
       <ul className={style.grid}>
         {data?.map((question, i) => (

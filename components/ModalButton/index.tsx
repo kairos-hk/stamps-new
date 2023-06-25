@@ -8,9 +8,10 @@ interface Props {
   children?: ReactNode
   buttonLabel?: ReactNode
   notice?: ReactNode
+  onClose?: () => void
 }
 
-export const ModalButton: FC<Props> = ({ notice, children, buttonLabel }) => {
+export const ModalButton: FC<Props> = ({ notice, children, buttonLabel, onClose: onCloseFn }) => {
   const [isOpened, setIsOpened] = useState(false)
 
   const onOpen = (): void => {
@@ -19,6 +20,7 @@ export const ModalButton: FC<Props> = ({ notice, children, buttonLabel }) => {
 
   const onClose = (): void => {
     setIsOpened(false)
+    onCloseFn?.()
   }
 
   return (
