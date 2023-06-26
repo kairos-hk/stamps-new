@@ -77,8 +77,8 @@ export const SolveFrom: FC<Props> = ({ question }) => {
 
       <Modal
         isOpened={openWrongModal}
-        backButtonLabel="다시풀기"
-        onClose={() => { setOpenWrongModal(false) }}>
+        backButtonLabel="다른 문제 스캔"
+        onClose={() => { router.replace('/quizscan') }}>
           <div className={style.modalContent}>
             <Image alt="졸고있는 굿자비" src="/assets/characters/char4.svg" width={191} height={161} />
             <h3>이런! 오답이에요</h3>
