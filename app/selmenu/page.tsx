@@ -21,8 +21,8 @@ const UserInfoPage: FC = async () => {
       </div>
 
       <div className={style.buttonbar}>
-        <Link href="/mystamps"><Button>스탬프 목록</Button></Link>
-        <Link href="/quizs"><Button altColor>문제 목록</Button></Link>
+        <Link href="/mystamps"><Button>스탬프 투어</Button></Link>
+        <Link href="/quizs"><Button altColor>보물 찾기</Button></Link>
       </div>
     </main>
   )
