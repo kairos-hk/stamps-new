@@ -19,7 +19,7 @@ const BoothList: FC = () => {
   const [deleteSelect, setDeleteSelect] = useState<number[]>([])
   const [deleteMode, setDeleteMode] = useState(false)
   const [data, setData] = useState<BoothData[] | undefined>(undefined)
-  const [lastFetch, setLastFetch] = useState<Date | undefined>()
+  const [, setLastFetch] = useState<Date | undefined>()
   const [lastFetchMsg, setLastFetchMsg] = useState('방금전')
   const [isLoading, setIsLoading] = useState(false)
 
@@ -88,22 +88,30 @@ const BoothList: FC = () => {
 
   useEffect(fetchData, [])
   useEffect(() => {
-    setInterval(() => {
-      if (lastFetch === undefined)
-        return
+    const timer = setInterval(() => {
+      setLastFetch((lastFetch) => {
+        if (lastFetch === undefined)
+          return
 
-      const last = lastFetch.getTime()
-      const now = new Date().getTime()
-      const diff = now - last
+        const last = lastFetch.getTime()
+        const now = new Date().getTime()
+        const diff = now - last
 
-      const lastFetchMsg =
-        diff < 60 * 1000
-          ? '방금전'
-          : `${Math.floor(diff / (60 * 1000))}분 전`
+        const lastFetchMsg =
+          diff < 60 * 1000
+            ? '방금전'
+            : `${Math.floor(diff / (60 * 1000))}분 전`
 
-      setLastFetchMsg(lastFetchMsg)
+        setLastFetchMsg(lastFetchMsg)
+
+        return lastFetch
+      })
     }, 1000)
-  }, [lastFetch])
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
 
   return (
     <>
