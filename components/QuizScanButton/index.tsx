@@ -5,7 +5,7 @@ import { useState, type FC, useEffect } from 'react'
 import { Button } from '../Button'
 
 const QuizScanButton: FC = () => {
-  const [message, setMessage] = useState<string | undefined>()
+  const [message, setMessage] = useState<string | undefined>('로딩중...')
 
   useEffect(() => {
     const timer = setInterval(() => {
