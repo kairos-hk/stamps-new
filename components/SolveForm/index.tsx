@@ -2,7 +2,7 @@
 
 import style from './style.module.scss'
 
-import { useState, type FC } from 'react'
+import { useState, type FC, useEffect } from 'react'
 import { type QuestionData } from '../../app/solvequiz/page'
 import { Button } from '../Button'
 import Image from 'next/image'
@@ -47,6 +47,10 @@ export const SolveFrom: FC<Props> = ({ question }) => {
       })
     })
   }
+
+  useEffect(() => {
+    window.history.replaceState({}, '', '/')
+  }, [])
 
   return (
     <>

@@ -1,5 +1,5 @@
 'use client'
-import { useState, type FC, type ComponentProps } from 'react'
+import { useState, type FC, type ComponentProps, useEffect } from 'react'
 import style from './style.module.scss'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
@@ -30,8 +30,25 @@ const QuizScanner: FC = () => {
       return
     }
 
-    router.push(`/solvequiz?q=${Math.random()}`)
+    window.localStorage.setItem('lastScanned', Date.now().toString())
+    router.replace(`/solvequiz?q=${Math.random()}`)
   }
+
+  useEffect(() => {
+    const data = window.localStorage.getItem('lastScanned')
+    if (data === null)
+      return
+
+    const last = parseInt(data)
+    const now = new Date().getTime()
+    const diff = Math.floor(300 - (now - last) / 1000)
+
+    if (diff < 0)
+      return
+
+    alert(`${diff}초 후 다시 시도 가능합니다.`)
+    router.push('/')
+  }, [router])
 
   return (
     <main className={style.container}>

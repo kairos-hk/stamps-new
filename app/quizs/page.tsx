@@ -3,8 +3,8 @@ import style from './style.module.scss'
 import { type FC } from 'react'
 import { TitleBar } from '../../components/TitleBar'
 import Link from 'next/link'
-import { Button } from '../../components/Button'
 import QuestionList from '../../components/QuestionList'
+import QuizScanButton from '../../components/QuizScanButton'
 
 const MyStampsPage: FC = () => {
   return (
@@ -15,12 +15,7 @@ const MyStampsPage: FC = () => {
       </div>
 
       <div>
-        <Link href="/quizscan">
-          <Button altColor>
-            퀴즈 QR 스캔하기
-          </Button>
-        </Link>
-
+        <QuizScanButton />
         <Link className={style.quiz} href="/">
           돌아가기
         </Link>
