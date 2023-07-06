@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 24px;
+
+  h1 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 20px 0px;
+  }
+
+  .content {
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow-y: auto;
+    padding: 24px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 62px;
+
+    h3 {
+      font-size: 18px;
+      margin-bottom: 14px;
+    }
+
+    ol {
+      list-style-position: inside;
+
+      ul {
+        list-style-type: "   - ";
+      }
+    }
+  }
+  
+  .quiz {
+    display: inline-block;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    color: var(--color-primary);
+    text-decoration: underline solid var(--color-primary);
+  }
+}

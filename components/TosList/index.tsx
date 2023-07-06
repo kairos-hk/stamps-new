@@ -30,7 +30,7 @@ export const TosList: FC = () => {
     if (!isPrivacyPolicyChecked || !isThirdPartyChecked) return
 
     const rawData = searchParams.get('data')
-    const redirectTarget = searchParams.get('redirect') ?? '/'
+    const redirectTarget = searchParams.get('redirect') ?? '/notice'
 
     if (rawData === null) {
       alert('오류 발생!')
