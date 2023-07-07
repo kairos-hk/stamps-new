@@ -24,6 +24,9 @@ const UserInfoPage: FC = async () => {
         <Link href="/mystamps"><Button>스탬프 투어</Button></Link>
         <Link href="/quizs"><Button altColor>보물 찾기</Button></Link>
       </div>
+        <Link className={style.help} href="/notice">
+          도움말 보기
+        </Link>
     </main>
   )
 }

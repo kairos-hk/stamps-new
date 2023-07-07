@@ -7,7 +7,7 @@ import Link from 'next/link'
 const NoticePage: FC = () => {
   return (
     <main className={style.container}>
-      <TitleBar>안내자료</TitleBar>
+      <TitleBar>도움말</TitleBar>
       <div className={style.content}>
         <div>
           <h3>스탬프 투어 참여 방법</h3>
