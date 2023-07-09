@@ -1,8 +1,7 @@
 import { type FC } from 'react'
 import { TitleBar } from '../../components/TitleBar'
 import style from './style.module.scss'
-import { Button } from '../../components/Button'
-import Link from 'next/link'
+import RedirectButton from '../../components/RedirectButton'
 
 const NoticePage: FC = () => {
   return (
@@ -52,11 +51,9 @@ const NoticePage: FC = () => {
       </div>
 
       <div>
-        <Link href="/">
-          <Button>
-            시작하기
-          </Button>
-        </Link>
+        <RedirectButton>
+          시작하기
+        </RedirectButton>
       </div>
     </main>
   )
