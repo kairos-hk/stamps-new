@@ -12,7 +12,7 @@ const UserInfoPage: FC = async () => {
       <TitleBar>메인</TitleBar>
 
       <div className={style.content}>
-        <Image src="/assets/characters/char5.svg" width={345} height={312} alt="안녕, 굿자비!" />
+        <Image src="/assets/characters/char5.svg" width={345} height={312} className={style.image} alt="안녕, 굿자비!" />
 
         <div>
           <h2>굿자비와 함께하고</h2>

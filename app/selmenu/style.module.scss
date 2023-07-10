@@ -3,6 +3,10 @@
   flex-direction: column;
   height: 100%;
 
+  .image {
+    max-height: 70%;
+  }
+
   .content {
     flex-grow: 1;
     flex-shrink: 1;
